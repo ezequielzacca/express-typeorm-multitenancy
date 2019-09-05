@@ -3,6 +3,7 @@
         "src/index.ts"
     ],
     "compilerOptions": {
+        "outDir": "dist",
         "noImplicitAny": true,
         "target": "es5",
         "esModuleInterop": true

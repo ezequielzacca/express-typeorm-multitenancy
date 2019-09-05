@@ -26,7 +26,7 @@ const startServer = async () => {
   // can utilize middleware options, which we'll discuss later.
   app.listen({ port: process.env.PORT || 4000 }, () => {
     console.log(
-      `🚢 Server Shipped at http://localhost:${process.env.PORT || 4000}${server.graphqlPath} successfully!`
+      `🚢 Server Shipped at http://localhost:${process.env.PORT || 4000}${server.graphqlPath}`
     );
   });
 };
