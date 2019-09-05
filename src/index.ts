@@ -24,9 +24,9 @@ const startServer = async () => {
   await loadFixture();
   // This `listen` method launches a web-server.  Existing apps
   // can utilize middleware options, which we'll discuss later.
-  app.listen({ port: 4000 }, () => {
+  app.listen({ port: process.env.PORT || 4000 }, () => {
     console.log(
-      `🚢 Server Shipped at http://localhost:4000${server.graphqlPath}`
+      `🚢 Server Shipped at http://localhost:${process.env.PORT || 4000}${server.graphqlPath}`
     );
   });
 };

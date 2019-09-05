@@ -9,6 +9,12 @@ import { IAuthor } from "../models/interfaces/author.interface";
 export const resolvers = {
   Query: {
     books: async () => Book.find(),
+    booksWhereTitleContains: async (_: any, { query }: { query: string }) =>
+      Book.find({
+        title: { $regex: query, $options: 'i' }
+      })
+
+    ,
     genres: async () => Genre.find(),
     authors: async () => Author.find()
   },

@@ -47,6 +47,7 @@ export const typeDefs = gql`
   # (A "Mutation" type will be covered later on.)
   type Query {
     books: [Book]
+    booksWhereTitleContains(query:String!): [Book]
     genres: [Genre]
     authors: [Genre]
   }
