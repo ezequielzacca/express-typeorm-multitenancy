@@ -18,12 +18,14 @@ export const typeDefs = gql`
     id: ID!
     name: String!
     books: [Book!]!
+    numberOfBooks: Int!
   }
 
   type Author {
     id: ID!
     name: String!
     books: [Book!]!
+    numberOfBooks: Int!
   }
 
 

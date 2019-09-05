@@ -16,11 +16,19 @@ export const resolvers = {
     books: (parent: IGenre) =>
       Book.find({
         genreId: parent.id
+      }),
+    numberOfBooks: (parent: IGenre) =>
+      Book.count({
+        authorId: parent.id
       })
   },
   Author: {
     books: (parent: IGenre) =>
       Book.find({
+        authorId: parent.id
+      }),
+    numberOfBooks: (parent: IGenre) =>
+      Book.count({
         authorId: parent.id
       })
   },

@@ -19,7 +19,6 @@ export const loadFixture = async () => {
         let author = await Author.findOne({
             name: randomAuthorName
         })
-        console.log("looked for author with name: ", randomAuthorName, " and found: ", author);
         if (!author) {
             author = await Object.assign(new Author(), <Partial<IAuthor>>{
                 name: randomAuthorName
