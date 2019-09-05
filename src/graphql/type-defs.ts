@@ -35,12 +35,26 @@ export const typeDefs = gql`
     authorId: ID!
   }
 
+  input BookUpdateInput {
+    title: String
+    genreId: ID
+    authorId: ID
+  }
+
   input GenreInput {
     name: String!
   }
 
+  input GenreUpdateInput {
+    name: String
+  }
+
   input AuthorInput {
     name: String!
+  }
+
+  input AuthorUpdateInput {
+    name: String
   }
 
   # The "Query" type is the root of all GraphQL queries.
@@ -54,7 +68,10 @@ export const typeDefs = gql`
 
   type Mutation {
     createBook(book: BookInput): Book!
+    updateBook(id:ID!, book: BookUpdateInput!): Book!
     createGenre(genre: GenreInput): Genre!
+    updateGenre(id:ID!, genre: GenreUpdateInput!): Genre!
     createAuthor(author: AuthorInput): Author!
+    updateAuthor(id:ID!, author: AuthorUpdateInput!): Author!
   }
 `;
