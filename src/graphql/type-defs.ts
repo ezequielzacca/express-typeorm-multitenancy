@@ -8,7 +8,8 @@ export const typeDefs = gql`
   type Book {
     id: ID!
     title: String!
-    author: String!
+    authorId: ID!
+    author: Author!
     genreId: ID!
     genre: Genre!
   }
@@ -19,13 +20,24 @@ export const typeDefs = gql`
     books: [Book!]!
   }
 
+  type Author {
+    id: ID!
+    name: String!
+    books: [Book!]!
+  }
+
+
   input BookInput {
     title: String!
-    author: String!
     genreId: ID!
+    authorId: ID!
   }
 
   input GenreInput {
+    name: String!
+  }
+
+  input AuthorInput {
     name: String!
   }
 
@@ -34,10 +46,12 @@ export const typeDefs = gql`
   type Query {
     books: [Book]
     genres: [Genre]
+    authors: [Genre]
   }
 
   type Mutation {
     createBook(book: BookInput): Book!
     createGenre(genre: GenreInput): Genre!
+    createAuthor(author: AuthorInput): Author!
   }
 `;

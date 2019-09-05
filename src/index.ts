@@ -1,3 +1,4 @@
+import { loadFixture } from './fixtures/fixture';
 import { ApolloServer, gql } from "apollo-server-express";
 import { typeDefs } from "./graphql/type-defs";
 import { resolvers } from "./graphql/resolvers";
@@ -19,6 +20,7 @@ const startServer = async () => {
     useNewUrlParser: true
   });
 
+  await loadFixture();
   // This `listen` method launches a web-server.  Existing apps
   // can utilize middleware options, which we'll discuss later.
   app.listen({ port: 4000 }, () => {
