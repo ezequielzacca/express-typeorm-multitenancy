@@ -5,4 +5,4 @@ export const GenreSchema = new mongoose.Schema({
   name: String
 });
 
-export const Genre = mongoose.model<IGenre>("Genre", GenreSchema);
+export const Genre = mongoose.model<IGenre>("genre", GenreSchema, "genres");

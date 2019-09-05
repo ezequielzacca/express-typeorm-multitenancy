@@ -10,15 +10,16 @@ export const loadFixture = async () => {
     await Author.deleteMany({});
     await Genre.deleteMany({});
 
-    genres.map(genre => {
+    await Promise.all(genres.map(async genre => {
         const created = Object.assign(new Genre(), <Partial<IGenre>>{ name: genre });
-        created.save();
-    })
-    bookNames.map(async bookName => {
+        await created.save();
+    }));
+    for (let i = 1; i <= bookNames.length; i++) {
         const randomAuthorName = authorNames[Math.floor(Math.random() * authorNames.length)] + " " + authorLastNames[Math.floor(Math.random() * authorLastNames.length)];
         let author = await Author.findOne({
             name: randomAuthorName
-        });
+        })
+        console.log("looked for author with name: ", randomAuthorName, " and found: ", author);
         if (!author) {
             author = await Object.assign(new Author(), <Partial<IAuthor>>{
                 name: randomAuthorName
@@ -28,36 +29,25 @@ export const loadFixture = async () => {
             name: genres[Math.floor(Math.random() * genres.length)]
         });
         const book = Object.assign(new Book(), <Partial<IBook>>{
-            title: bookName,
+            title: bookNames[i - 1],
             authorId: author.id,
             genreId: randomGenre.id
         })
-        book.save();
-    })
+        await book.save();
+    }
+
 }
 
 export const authorNames = [
     "John",
     "Alexis",
-    "Mark",
-    "Jennifer",
-    "Nicole",
-    "Peter",
-    "Raph",
-    "Mathias",
-    "Loreley"
+    "Mark"
 ]
 
 export const authorLastNames = [
     "Johnson",
     "Stewart",
-    "Harrison",
-    "Harmon",
-    "Oliver",
-    "Glover",
-    "Gonzalez",
-    "Baker",
-    "Wilson"
+    "Harrison"
 ]
 
 export const bookNames = [
@@ -83,7 +73,17 @@ export const bookNames = [
     "Chasing The Ships",
     "Woman Of My Admiration",
     "Write About The Night",
-    "Secret Admirers With Curly Hair"
+    "Secret Admirers With Curly Hair",
+    "Witch Of Outer Space",
+    "Criminal Of Nature",
+    "Giants In My City",
+    "Pilots Of History",
+    "Pilots And Wives",
+    "Armies And Trees",
+    "Nightmares Of The Mountain",
+    "Oracle Of A Woman",
+    "Corrupted By My Past",
+    "Doubting My Home"
 ]
 
 export const genres = [

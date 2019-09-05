@@ -20,6 +20,7 @@ const startServer = async () => {
     useNewUrlParser: true
   });
 
+  //load initial data for testing purposes
   await loadFixture();
   // This `listen` method launches a web-server.  Existing apps
   // can utilize middleware options, which we'll discuss later.

@@ -7,4 +7,4 @@ export const BookSchema = new mongoose.Schema({
   authorId: mongoose.Schema.Types.ObjectId
 });
 
-export const Book = mongoose.model<IBook>("Book", BookSchema);
+export const Book = mongoose.model<IBook>("book", BookSchema,"books");
